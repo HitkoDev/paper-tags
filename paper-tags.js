@@ -48,14 +48,12 @@ $_documentContainer.innerHTML = `<dom-module id="paper-tags">
     display: inline-block;
   }
   </style>
-  <template>
-    <template is="dom-repeat" id="tagRepeat" items="[[items]]">
-      <div class\$="paper-tag-item [[_computeClass(item, classAccessor)]]">
-        <span class="paper-tag-item-label">[[_computeLabel(item, labelPath)]]</span>
-        <paper-icon-button icon="icons:close" hidden\$="[[preventRemoveTag]]" on-tap="_removeTag"></paper-icon-button>
-        <paper-icon-button icon="[[_computeIcon(item, iconAccessor)]]" hidden\$="[[!preventRemoveTag]]"></paper-icon-button>
-      </div>
-    </template>
+  <template is="dom-repeat" id="tagRepeat" items="[[items]]">
+    <div class\$="paper-tag-item [[_computeClass(item, classAccessor)]]">
+      <span class="paper-tag-item-label">[[_computeLabel(item, labelPath)]]</span>
+      <paper-icon-button icon="icons:close" hidden\$="[[preventRemoveTag]]" on-tap="_removeTag"></paper-icon-button>
+      <paper-icon-button icon="[[_computeIcon(item, iconAccessor)]]" hidden\$="[[!preventRemoveTag]]"></paper-icon-button>
+    </div>
   </template>
 </dom-module>`;
 
