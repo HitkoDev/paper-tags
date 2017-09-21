@@ -34,9 +34,9 @@ Polymer({
     }
     </style>
     <paper-input id="tagInput" always-float-label="" on-keydown="_keyDown" readonly\$="[[readonly]]" placeholder\$="[[placeholder]]" disabled\$="[[disabled]]" invalid="[[invalid]]" label="[[label]]" value="{{value}}" maxlength\$="[[maxlength]]" error-message="[[errorMessage]]" minlength\$="[[minlength]]">
-      <content select="[prefix]" prefix=""></content>
-      <paper-tags id="paperTags" readonly\$="[[readonly]]" items="{{items}}" icon="[[icon]]" item-class="[[itemClass]]" class-accessor="[[classAccessor]]" label-path="[[labelPath]]" icon-accessor="[[iconAccessor]]" prevent-remove-tag="[[preventRemoveTag]]" prefix=""></paper-tags>
-      <content select="[suffix]" suffix=""></content>
+      <content select="[prefix]" slot="prefix"></content>
+      <paper-tags id="paperTags" readonly\$="[[readonly]]" items="{{items}}" icon="[[icon]]" item-class="[[itemClass]]" class-accessor="[[classAccessor]]" label-path="[[labelPath]]" icon-accessor="[[iconAccessor]]" prevent-remove-tag="[[preventRemoveTag]]" slot="prefix"></paper-tags>
+      <content select="[suffix]" slot="suffix"></content>
     </paper-input>
     <template is="dom-if" if="{{showCounter}}">
       <div class="paper-tags-counter">

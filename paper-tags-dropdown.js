@@ -41,7 +41,7 @@ Polymer({
         <!-- paper-input has type="text" for a11y, do not remove -->
         <iron-a11y-keys id="a11y" target="[[keyTarget]]" keys="[[_computeKeys()]]" on-keys-pressed="_onAscii"></iron-a11y-keys>
         <paper-tags-input max-tags="[[maxTags]]" prevent-remove-tag="[[preventRemoveTag]]" min-tags="[[minTags]]" id="tagInput" value-object="{{valueObject}}" value-array="{{valueArray}}" on-tap="_onTagTap" tag-tpl="[[tagTpl]]" items="[[tagItems]]" value="{{value}}" icon="[[icon]]" item-class="[[itemClass]]" class-accessor="[[classAccessor]]" label-path="[[labelPath]]" icon-accessor="[[iconAccessor]]" key-path="[[keyPath]]" invalid="[[invalid]]" readonly="[[readonly]]" disabled="[[disabled]]" placeholder="[[placeholder]]" error-message="[[errorMessage]]" label="[[label]]" show-counter="[[showCounter]]">
-          <iron-icon icon="paper-dropdown-menu:arrow-drop-down" suffix=""></iron-icon>
+          <iron-icon icon="paper-dropdown-menu:arrow-drop-down" slot="suffix"></iron-icon>
         </paper-tags-input>
       </div>
       <paper-menu class="dropdown-content" disabled="[[disabled]]" selected-values="{{valueArray}}" attr-for-selected="name" multi="">
