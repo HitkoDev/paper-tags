@@ -27,11 +27,8 @@
     "@polymer/iron-icon": "^3.0.0-pre.1",
     "@polymer/iron-a11y-keys": "^3.0.0-pre.1",
     "@polymer/iron-behaviors": "^3.0.0-pre.1",
-    "@polymer/iron-validatable-behavior": "^3.0.0-pre.1",
     "@polymer/paper-item": "^3.0.0-pre.1",
-    "@polymer/paper-ripple": "^3.0.0-pre.1",
-    "@polymer/paper-dropdown-menu": "^3.0.0-pre.1",
-    "@polymer/paper-menu": "^3.0.0-pre.1"
+    "@polymer/paper-ripple": "^3.0.0-pre.1"
   },
   "devDependencies": {}
 }
