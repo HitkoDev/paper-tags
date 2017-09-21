@@ -1,14 +1,4 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<link rel="import" href="../polymer/polymer.html">
-<script>
+import '../@polymer/polymer/polymer.js';
 /**
  * `Polymer.ValueArrayFirebaseBehavior` ensures the binding between array values and firebase objects.
  *
@@ -51,11 +41,11 @@ Polymer.ValueArrayFirebaseBehavior = {
   ],
 
   //called when we set/reset valueArray 
-  _observeValueArrayInit: function(valueArray) {
+  _observeValueArrayInit: function (valueArray) {
     this._isInitiatingValueArray = true;
     if (valueArray && !this._isUpdatingValueObject) {
       var o = {};
-      this.valueArray.forEach(function(item) {
+      this.valueArray.forEach(function (item) {
         o[item] = true;
       });
       this.set('valueObject', o);
@@ -67,15 +57,15 @@ Polymer.ValueArrayFirebaseBehavior = {
   /**
    * `_observeValueArray` ensures valueArray and valueObject are in sync
    */
-  _observeValueArray: function(splices) {
+  _observeValueArray: function (splices) {
     if (!splices) {
       return;
     }
     this._isUpdatingValueArray = true;
     // console.log('ARRAY SPLICE', splices);
     if (!this._isUpdatingValueObject) {
-      splices.indexSplices.forEach(function(splice) {
-        splice.removed.forEach(function(removed) {
+      splices.indexSplices.forEach(function (splice) {
+        splice.removed.forEach(function (removed) {
           this.set('valueObject.' + removed, null); // so that it is deleted at firebase level
           this.fire('tag-removed', removed);
         }, this);
@@ -97,10 +87,10 @@ Polymer.ValueArrayFirebaseBehavior = {
   /**
    * `_observeValueObject` ensures valueArray and valueObject are in sync
    */
-  _observeValueObject: function(obj) {
+  _observeValueObject: function (obj) {
     this._isUpdatingValueObject = true;
     if (!this._isUpdatingValueArray && !this._isInitiatingValueArray) {
-      var keys = Object.keys(this.valueObject).filter(function(item) {
+      var keys = Object.keys(this.valueObject).filter(function (item) {
         return !!item;
       });
       this.syncValueArrayWithKeys(keys);
@@ -109,20 +99,20 @@ Polymer.ValueArrayFirebaseBehavior = {
     }
     delete this._isUpdatingValueObject;
   },
-  
-  syncValueArrayWithKeys: function(keys) {
+
+  syncValueArrayWithKeys: function (keys) {
     if (!this.valueArray) {
       this.valueArray = [];
     }
     // removed values not present in keys
     var tmpArray = [].concat(this.valueArray);
-    tmpArray.forEach(function(v) {
+    tmpArray.forEach(function (v) {
       if (keys.indexOf(v) < 0) {
         this.splice('valueArray', this.valueArray.indexOf(v), 1);
       }
     }, this);
     // add all missing keys
-    keys.forEach(function(k) {
+    keys.forEach(function (k) {
       if (this.valueArray.indexOf(k) < 0) {
         this.push('valueArray', k);
       }
@@ -130,4 +120,3 @@ Polymer.ValueArrayFirebaseBehavior = {
   }
 
 };
-</script>

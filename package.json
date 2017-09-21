@@ -1,0 +1,38 @@
+{
+  "name": "paper-tags",
+  "flat": true,
+  "version": "2.0.0",
+  "description": "paper-input and paper-dropdown-menu with tags",
+  "contributors": [
+    "christophe.geiser <christophe.geiser@e-smile.org>"
+  ],
+  "keywords": [
+    "web-component",
+    "web-components",
+    "tags",
+    "material design",
+    "polymer",
+    "form",
+    "input",
+    "paper-input"
+  ],
+  "main": "paper-tags-import.html",
+  "license": "https://github.com/PolymerEl/LICENCE",
+  "homepage": "https://github.com/PolymerEl/paper-tags",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-input": "^3.0.0-pre.1",
+    "@polymer/paper-badge": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/iron-a11y-keys": "^3.0.0-pre.1",
+    "@polymer/iron-behaviors": "^3.0.0-pre.1",
+    "@polymer/iron-validatable-behavior": "^3.0.0-pre.1",
+    "@polymer/paper-item": "^3.0.0-pre.1",
+    "@polymer/paper-ripple": "^3.0.0-pre.1",
+    "@polymer/paper-dropdown-menu": "^3.0.0-pre.1",
+    "@polymer/paper-menu": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

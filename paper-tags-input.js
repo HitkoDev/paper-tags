@@ -1,36 +1,9 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="paper-tags.html">
-<link rel="import" href="paper-tags-behavior.html">
-<!--
-An element for settings tags tags, based on paper-input
-
-### Example:
-
-    <paper-tags-input label="input label" show-counter="tags" items='["hello", "new"]'  maxLength="10"></paper-tags-input>
-
-### Styling
-
-The following custom properties and mixins are available for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--paper-tag-margin`   | bottom margin for tags | 3px
-
-@element paper-tags-input
-@demo demo/index.html
--->
-<dom-module id="paper-tags-input">
-  <template>
+import '../@polymer/polymer/polymer.js';
+import '../@polymer/paper-input/paper-input.js';
+import './paper-tags.js';
+import './paper-tags-behavior.js';
+Polymer({
+  _template: `
     <style>
     :host {
       display: block;
@@ -60,20 +33,18 @@ Custom property | Description | Default
       display: inline-block;
     }
     </style>
-    <paper-input id="tagInput" always-float-label on-keydown="_keyDown" readonly$="[[readonly]]" placeholder$="[[placeholder]]" disabled$="[[disabled]]" invalid="[[invalid]]" label="[[label]]" value="{{value}}" maxlength$="[[maxlength]]" error-message="[[errorMessage]]" minlength$="[[minlength]]" invalid="{{invalid}}">
-      <content select="[prefix]" prefix></content>
-      <paper-tags id="paperTags" readonly$="[[readonly]]" items="{{items}}" icon="[[icon]]" item-class="[[itemClass]]" class-accessor="[[classAccessor]]" label-path="[[labelPath]]" icon-accessor="[[iconAccessor]]" prevent-remove-tag="[[preventRemoveTag]]" prefix></paper-tags>
-      <content select="[suffix]" suffix></content>
+    <paper-input id="tagInput" always-float-label="" on-keydown="_keyDown" readonly\$="[[readonly]]" placeholder\$="[[placeholder]]" disabled\$="[[disabled]]" invalid="[[invalid]]" label="[[label]]" value="{{value}}" maxlength\$="[[maxlength]]" error-message="[[errorMessage]]" minlength\$="[[minlength]]">
+      <content select="[prefix]" prefix=""></content>
+      <paper-tags id="paperTags" readonly\$="[[readonly]]" items="{{items}}" icon="[[icon]]" item-class="[[itemClass]]" class-accessor="[[classAccessor]]" label-path="[[labelPath]]" icon-accessor="[[iconAccessor]]" prevent-remove-tag="[[preventRemoveTag]]" prefix=""></paper-tags>
+      <content select="[suffix]" suffix=""></content>
     </paper-input>
     <template is="dom-if" if="{{showCounter}}">
       <div class="paper-tags-counter">
         <paper-badge class="paper-tags-badge" label="[[items.length]]"></paper-badge> [[showCounter]]
       </div>
     </template>
-  </template>
-</dom-module>
-<script>
-Polymer({
+`,
+
   is: 'paper-tags-input',
 
   behaviors: [
@@ -139,25 +110,27 @@ Polymer({
       value: true
     }
   },
+
   observers: [
     '_observeTagItemsInit(items)',
     '_observeTagItems(items.splices)'
   ],
 
-  _observeTagItemsInit: function(items) {
-    if(items && !this.valueArray) {
+  _observeTagItemsInit: function (items) {
+    if (items && !this.valueArray) {
       this._observeTagItems(items)
 
     }
 
   },
-  _observeTagItems: function(splices) {
-    if(!splices) {
+
+  _observeTagItems: function (splices) {
+    if (!splices) {
       return
     }
     var keys = [];
     this._isUpdatingingItems = true;
-    this.items.forEach(function(item) {
+    this.items.forEach(function (item) {
       var id = item[this.keyPath] || item;
       keys.push(id + '');
     }, this);
@@ -167,17 +140,17 @@ Polymer({
     delete this._isUpdatingingItems;
   },
 
-  _removeLast: function() {
+  _removeLast: function () {
     var last = this.items.pop();
     this.items = this.items.slice();
     // this.fire('tag-removed', last);
   },
 
-  findTag: function(tag) {
+  findTag: function (tag) {
     return this.items.includes(tag);
   },
 
-  _addTag: function(tag) {
+  _addTag: function (tag) {
     if (this.tagTpl) {
       var id = tag;
       tag = JSON.parse(JSON.stringify(this.tagTpl));
@@ -191,29 +164,28 @@ Polymer({
     // this.fire('tag-added', tag);
   },
 
-  _keyDown: function(event) {
+  _keyDown: function (event) {
     var keyVal = event.which;
     if (keyVal === 13 && this.allowAdd) {
       var tags = event.target.value.split(this.delimiter);
-      var me = this; 
-      
-      tags.forEach(function(tag) {
-       if (!me.findTag(tag)) {
+      var me = this;
+
+      tags.forEach(function (tag) {
+        if (!me.findTag(tag)) {
           me._addTag(tag);
           event.target.value = '';
         }
       });
-      
+
     } else if (keyVal === 8 && event.target.value === '') {
       this._removeLast();
     }
   },
+
   /**
    * Returns a reference to the focusable element.
    */
   get _focusableElement() {
     return this.$.tagInput.inputElement;
-  },
-
+  }
 });
-</script>
