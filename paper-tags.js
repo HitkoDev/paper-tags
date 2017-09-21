@@ -8,7 +8,7 @@ import './paper-tags-behavior.js';
 const $_documentContainer = document.createElement('div');
 $_documentContainer.setAttribute('style', 'display: none;');
 
-$_documentContainer.innerHTML = `<dom-module id="paper-tags">
+$_documentContainer.innerHTML = `
   <style>
   [hidden] {
     display: none !important;
@@ -48,16 +48,13 @@ $_documentContainer.innerHTML = `<dom-module id="paper-tags">
     display: inline-block;
   }
   </style>
-  <div>
     <template is="dom-repeat" id="tagRepeat" items="[[items]]">
       <div class\$="paper-tag-item [[_computeClass(item, classAccessor)]]">
         <span class="paper-tag-item-label">[[_computeLabel(item, labelPath)]]</span>
         <paper-icon-button icon="icons:close" hidden\$="[[preventRemoveTag]]" on-tap="_removeTag"></paper-icon-button>
         <paper-icon-button icon="[[_computeIcon(item, iconAccessor)]]" hidden\$="[[!preventRemoveTag]]"></paper-icon-button>
       </div>
-    </template>
-  </div>
-</dom-module>`;
+    </template>`;
 
 document.head.appendChild($_documentContainer);
 Polymer({
