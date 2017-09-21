@@ -1,6 +1,5 @@
 {
   "name": "paper-tags",
-  "flat": true,
   "version": "2.0.0",
   "description": "paper-input and paper-dropdown-menu with tags",
   "contributors": [
