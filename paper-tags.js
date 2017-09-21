@@ -58,6 +58,53 @@ $_documentContainer.innerHTML = `
 
 document.head.appendChild($_documentContainer);
 Polymer({
+  _template: `
+  <style>
+  [hidden] {
+    display: none !important;
+  }
+
+  :host {
+    display: block;
+    @apply(--paper-font-common-base);
+    @apply(--paper-tags);
+  }
+  
+  div.paper-tag-item {
+    margin-bottom: var(--paper-tag-margin, 3px);
+    border: 1px solid var(--paper-tag-focus-color, --default-primary-color);
+    font-size: 13px;
+    color: var(--paper-tag-text-color, --secondary-text-color);
+    border-radius: 4px;
+    @apply(--paper-tag-item);
+  }
+  
+  .paper-tag-item:last-of-type {
+    margin-right: var(--paper-tag-margin, 3px);
+  }
+  
+  paper-icon-button {
+    color: var(--paper-tag-focus-color, --default-primary-color);
+    width: 20px;
+    height: 20px;
+    padding: 0;
+  }
+  
+  .paper-tag-item-label {
+    padding: var(--paper-tag-margin, 3px);
+  }
+  
+  .paper-tag-item {
+    display: inline-block;
+  }
+  </style>
+    <template is="dom-repeat" id="tagRepeat" items="[[items]]">
+      <div class\$="paper-tag-item [[_computeClass(item, classAccessor)]]">
+        <span class="paper-tag-item-label">[[_computeLabel(item, labelPath)]]</span>
+        <paper-icon-button icon="icons:close" hidden\$="[[preventRemoveTag]]" on-tap="_removeTag"></paper-icon-button>
+        <paper-icon-button icon="[[_computeIcon(item, iconAccessor)]]" hidden\$="[[!preventRemoveTag]]"></paper-icon-button>
+      </div>
+    </template>`,
 
   is: 'paper-tags',
 
