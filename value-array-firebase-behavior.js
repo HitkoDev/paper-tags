@@ -1,4 +1,4 @@
-import Polymer from '../@polymer/polymer/polymer.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 /**
  * `Polymer.ValueArrayFirebaseBehavior` ensures the binding between array values and firebase objects.
  *
