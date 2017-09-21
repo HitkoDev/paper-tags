@@ -1,4 +1,4 @@
-import '../@polymer/polymer/polymer.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 import './value-array-firebase-behavior.js';
 /**
  * `Polymer.PaperTagsBehavior` defines recurent properties in paper-tags family (paper-tags, paper-tags-input, paper-tags-dropdown)

@@ -1,4 +1,4 @@
-import '../@polymer/polymer/polymer.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 import '../@polymer/paper-input/paper-input.js';
 import '../@polymer/paper-badge/paper-badge.js';
 import '../@polymer/paper-icon-button/paper-icon-button.js';

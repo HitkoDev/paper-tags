@@ -1,4 +1,4 @@
-import '../@polymer/polymer/polymer.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 import '../@polymer/paper-input/paper-input.js';
 import './paper-tags.js';
 import './paper-tags-behavior.js';

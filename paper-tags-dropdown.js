@@ -1,4 +1,4 @@
-import '../@polymer/polymer/polymer.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 import '../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
 import '../@polymer/iron-a11y-keys/iron-a11y-keys.js';
 import '../@polymer/iron-behaviors/iron-button-state.js';
